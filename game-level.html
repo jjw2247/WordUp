@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 게임 레벨 - 오량 어학사전</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="game-level.css">
+</head>
+<body>
+    <!-- Figma 스타일 상단 네비게이션 -->
+    <nav class="banner figma-banner">
+        <div class="logo figma-logo">
+            <img src="daeshin-logo.png" alt="대전대신고등학교 마크" class="school-logo">
+            오량 어학사전
+        </div>
+        <div class="nav-buttons figma-nav">
+            <button class="nav-btn" onclick="window.location.href='index.html'">홈</button>
+            <button class="nav-btn" onclick="window.location.href='goldenbell.html'">골든벨</button>
+            <button class="nav-btn active" onclick="window.location.href='game-level.html'">단어 게임</button>
+            <button class="nav-btn" onclick="window.location.href='attendance.html'">출석체크</button>
+            <button class="nav-btn" onclick="window.location.href='dictionary.html'">어학사전</button>
+        </div>
+        <button class="login-btn figma-login">로그인</button>
+    </nav>
+
+    <main class="game-level-container">
+        <div class="level-selection">
+            <h2 class="level-title">게임의 난이도를 선택해 주세요</h2>
+            
+            <div class="ranking-display">
+                <div class="ranking-tabs">
+                    <button class="ranking-tab active" data-level="easy">하</button>
+                    <button class="ranking-tab" data-level="medium">중</button>
+                    <button class="ranking-tab" data-level="hard">상</button>
+                </div>
+                <div class="ranking-content">
+                    <table class="ranking-table">
+                        <thead>
+                            <tr>
+                                <th>학번</th>
+                                <th>이름</th>
+                                <th>기록</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024001</td>
+                                <td>홍길동</td>
+                                <td>45초</td>
+                            </tr>
+                            <tr>
+                                <td>2024002</td>
+                                <td>김철수</td>
+                                <td>52초</td>
+                            </tr>
+                            <tr>
+                                <td>2024003</td>
+                                <td>이영희</td>
+                                <td>58초</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="level-buttons">
+                <button class="level-btn" onclick="location.href='game.html?level=easy'">하</button>
+                <button class="level-btn" onclick="location.href='game.html?level=medium'">중</button>
+                <button class="level-btn" onclick="location.href='game.html?level=hard'">상</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="game-level.js"></script>
+</body>
+</html> 

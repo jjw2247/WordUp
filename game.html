@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 게임 - 오량 어학사전</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <!-- Figma 스타일 상단 네비게이션 -->
+    <nav class="banner figma-banner">
+        <div class="logo figma-logo">
+            <img src="daeshin-logo.png" alt="대전대신고등학교 마크" class="school-logo">
+            오량 어학사전
+        </div>
+        <div class="nav-buttons figma-nav">
+            <button class="nav-btn" onclick="window.location.href='index.html'">홈</button>
+            <button class="nav-btn" onclick="window.location.href='goldenbell.html'">골든벨</button>
+            <button class="nav-btn active" onclick="window.location.href='game-level.html'">단어 게임</button>
+            <button class="nav-btn" onclick="window.location.href='attendance.html'">출석체크</button>
+            <button class="nav-btn" onclick="window.location.href='dictionary.html'">어학사전</button>
+        </div>
+        <button class="login-btn figma-login">로그인</button>
+    </nav>
+
+    <main class="game-container">
+        <div class="timer">00:00</div>
+        
+        <div class="game-content">
+            <div class="bingo-board">
+                <!-- 빙고판은 JavaScript로 동적 생성됩니다 -->
+            </div>
+            
+            <div class="word-meanings">
+                <h3>단어 목록</h3>
+                <ul class="meanings-list">
+                    <!-- 단어 목록은 JavaScript로 동적 생성됩니다 -->
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 

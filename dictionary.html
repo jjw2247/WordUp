@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어학사전 - 오량 어학사전</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dictionary.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Figma 스타일 상단 네비게이션 -->
+    <nav class="banner figma-banner">
+        <div class="logo figma-logo">
+            <img src="daeshin-logo.png" alt="대전대신고등학교 마크" class="school-logo">
+            오량 어학사전
+        </div>
+        <div class="nav-buttons figma-nav">
+            <button class="nav-btn" onclick="window.location.href='index.html'">홈</button>
+            <button class="nav-btn" onclick="window.location.href='goldenbell.html'">골든벨</button>
+            <button class="nav-btn" onclick="window.location.href='game-level.html'">단어 게임</button>
+            <button class="nav-btn" onclick="window.location.href='attendance.html'">출석체크</button>
+            <button class="nav-btn active" onclick="window.location.href='dictionary.html'">어학사전</button>
+        </div>
+        <button class="login-btn figma-login">로그인</button>
+    </nav>
+
+    <main class="dictionary-container">
+        <div class="difficulty-section">
+            <h2>난이도 선택</h2>
+            <div class="difficulty-buttons">
+                <button class="difficulty-btn" data-level="easy">하</button>
+                <button class="difficulty-btn" data-level="medium">중</button>
+                <button class="difficulty-btn" data-level="hard">상</button>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2>카테고리 선택</h2>
+            <div class="category-buttons">
+                <button class="category-btn" data-category="school">내신 필수 어휘</button>
+                <button class="category-btn" data-category="sat">수능 필수 어휘</button>
+                <button class="category-btn" data-category="common">상식</button>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="wordSearch" placeholder="단어나 의미를 검색하세요..." class="search-input">
+                <button id="searchBtn" class="search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    검색
+                </button>
+            </div>
+            <div class="search-info">
+                <span class="word-count">총 <span id="totalWords">0</span>개의 단어</span>
+            </div>
+        </div>
+
+        <div class="dictionary-content">
+            <div class="word-list">
+                <div class="word-list-header">
+                    <h2>단어 목록</h2>
+                    <div class="word-list-controls">
+                        <button class="sort-btn" id="sortAlphabetically">가나다순</button>
+                        <button class="sort-btn" id="sortByDate">최신순</button>
+                    </div>
+                </div>
+                <ul id="wordList"></ul>
+            </div>
+            <div class="word-detail">
+                <h2>단어 상세 정보</h2>
+                <div id="wordDetail" class="word-detail-content">
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        <p>난이도를 선택하고 단어를 검색해주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="dictionary.js"></script>
+</body>
+</html> 

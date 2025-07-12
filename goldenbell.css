@@ -1,0 +1,778 @@
+body {
+    font-family: 'Paperlogy', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* 네비게이션 배너 스타일 */
+.banner {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    transition: color 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-btn:hover {
+    color: #007bff;
+    background: #f8f9fa;
+}
+
+.nav-btn.active {
+    color: #007bff;
+    background: #e3f2fd;
+}
+
+.login-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #0056b3;
+}
+
+/* 디데이 화면 스타일 - 홈페이지와 동일한 배경 */
+.countdown-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(200,255,200,0.7) 100%), url('./KakaoTalk_20250612_230125073.png') center center/cover no-repeat;
+    color: #234c1a;
+    padding-top: 64px; /* 네비게이션 높이만큼 상단 여백 */
+    position: relative;
+}
+
+.countdown-screen::before {
+    background: none;
+}
+
+.countdown-content {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+.countdown-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.countdown-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-number {
+    font-size: 3rem;
+    font-weight: bold;
+    background: rgba(255,255,255,0.2);
+    padding: 1rem;
+    border-radius: 10px;
+    min-width: 80px;
+    display: block;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.countdown-label {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+.countdown-message {
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.countdown-message p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* 관리자 섹션 */
+.admin-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+.admin-button {
+    background: #2e7d32;
+    border: 2px solid #205723;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(46,125,50,0.18);
+    letter-spacing: 1px;
+}
+
+.admin-button:hover {
+    background: #205723;
+    border-color: #133a1a;
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px rgba(46,125,50,0.22);
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal-buttons button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:first-child {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.modal-buttons button:last-child {
+    background-color: #f44336;
+    color: white;
+}
+
+.modal-buttons button:hover {
+    opacity: 0.8;
+}
+
+/* 게임 화면 스타일 - 홈페이지와 동일한 배경 */
+.game-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(200,255,200,0.7) 100%), url('./KakaoTalk_20250612_230125073.png') center center/cover no-repeat;
+    color: #234c1a;
+    padding: 80px 0 32px 0; /* 상단 네비게이션 높이만큼 여백 */
+    position: relative;
+}
+
+.game-screen::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.2);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.game-screen > * {
+    position: relative;
+    z-index: 1;
+}
+
+.game-header {
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    color: #333;
+    padding: 32px 0 16px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    position: relative;
+    z-index: 1;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.game-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 16px 0;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.question-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    text-align: center;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.question-type {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.question-text {
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.options-container {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.option {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.option:hover {
+    background: #e9ecef;
+    border-color: #007bff;
+    transform: translateY(-2px);
+}
+
+.option.correct {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.option.incorrect {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.short-answer-container {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.short-answer-container input {
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    width: 200px;
+}
+
+.short-answer-container button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.short-answer-container button:hover {
+    background: #0056b3;
+}
+
+.result-container {
+    text-align: center;
+    padding: 24px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    margin: 32px auto;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+.result-message {
+    font-size: 1.3rem;
+    margin-bottom: 24px;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.result-message.correct {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.result-message.incorrect {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.result-container button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.result-container button:hover {
+    background: #218838;
+}
+
+.final-result {
+    text-align: center;
+    padding: 48px 24px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    margin: 32px auto;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+.final-result h2 {
+    font-size: 2.5rem;
+    margin-bottom: 32px;
+    color: #333;
+}
+
+.final-score {
+    background: #f8f9fa;
+    padding: 32px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+}
+
+.final-score p {
+    font-size: 1.3rem;
+    margin: 8px 0;
+    color: #333;
+}
+
+.final-score span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.final-result button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 0 8px;
+    transition: background-color 0.3s ease;
+}
+
+.final-result button:hover {
+    background: #0056b3;
+}
+
+.final-result button:last-child {
+    background: #6c757d;
+}
+
+.final-result button:last-child:hover {
+    background: #545b62;
+}
+
+/* 게임 모드 선택 화면 */
+.mode-selection {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.mode-card {
+    background: rgba(255,255,255,0.95);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 16px;
+    padding: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-width: 400px;
+    min-width: 350px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.mode-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    border-color: #007bff;
+}
+
+.mode-card h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.mode-card p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.mode-info {
+    background: #e9ecef;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #495057;
+}
+
+.back-button {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.back-button:hover {
+    background: #545b62;
+}
+
+/* 로그인 필요 화면 스타일 */
+.login-required-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.login-required-content {
+    background: white;
+    border-radius: 16px;
+    padding: 48px 32px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 100%;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.login-required-icon {
+    font-size: 4rem;
+    margin-bottom: 24px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.login-required-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.login-required-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    font-size: 1.1rem;
+}
+
+.login-required-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.login-required-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .banner {
+        padding: 0 16px;
+        height: 56px;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-buttons {
+        gap: 8px;
+    }
+    
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .countdown-screen {
+        padding-top: 56px;
+    }
+    
+    .countdown-timer {
+        gap: 1rem;
+    }
+    
+    .countdown-number {
+        font-size: 2rem;
+        min-width: 60px;
+        padding: 0.8rem;
+    }
+    
+    .countdown-title {
+        font-size: 2rem;
+    }
+    
+    .countdown-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .game-screen {
+        padding: 72px 0 32px 0;
+    }
+    
+    .question-text {
+        font-size: 1.3rem;
+    }
+    
+    .short-answer-container {
+        flex-direction: column;
+    }
+    
+    .short-answer-container input {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-required-content {
+        padding: 32px 24px;
+    }
+    
+    .login-required-title {
+        font-size: 1.5rem;
+    }
+    
+    .login-required-description {
+        font-size: 1rem;
+    }
+    
+    .login-required-btn {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+}
+
+/* 모드 선택 화면 */
+.goldenbell-select-area {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.goldenbell-select-area h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #234c1a;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.mode-selection {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mode-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    border: none;
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 300px;
+    box-shadow: 0 4px 15px rgba(76,175,80,0.3);
+    text-align: left;
+}
+
+.mode-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(76,175,80,0.4);
+    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+}
+
+.mode-btn h3 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    color: white;
+}
+
+.mode-btn p {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* 게임 영역 */
+.game-area {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+} 

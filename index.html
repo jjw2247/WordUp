@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오량 어학사전</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Figma 스타일 상단 네비게이션 -->
+    <nav class="banner figma-banner">
+        <div class="logo figma-logo">
+            <img src="daeshin-logo.png" alt="대전대신고등학교 마크" class="school-logo">
+            오량 어학사전
+        </div>
+        <div class="nav-buttons figma-nav">
+            <button class="nav-btn active" onclick="window.location.href='index.html'">홈</button>
+            <button class="nav-btn" onclick="window.location.href='goldenbell.html'">골든벨</button>
+            <button class="nav-btn" onclick="window.location.href='game-level.html'">단어 게임</button>
+            <button class="nav-btn" onclick="window.location.href='attendance.html'">출석체크</button>
+            <button class="nav-btn" onclick="window.location.href='dictionary.html'">어학사전</button>
+        </div>
+        <button class="login-btn figma-login">로그인</button>
+    </nav>
+
+    <main class="figma-main-bg">
+        <div class="figma-title-area">
+            <div class="figma-live-box">
+                <span class="figma-live-btn active">실시간 랭킹</span>
+                <span class="figma-live-btn">천정욱</span>
+                <span class="figma-live-btn">야물딱</span>
+                <span class="figma-live-btn">서버렷</span>
+            </div>
+            <h2 class="figma-main-title">
+                어렵기만한 어휘  <img src="daeshin-logo.png" alt="대전대신고등학교 마크" class="school-logo" style="height: 1.2em; vertical-align: middle; margin-left: 0.1em;"><br>
+                오량어학사전에서
+            </h2>
+            <div class="figma-today-title">오늘의 단어</div>
+            <div class="figma-hint">*카드를 클릭해서 뒤집어보세요!</div>
+        </div>
+        <div class="figma-cards-container">
+            <div class="figma-card">
+                <div class="figma-card-inner">
+                    <div class="figma-card-front">청유하다</div>
+                    <div class="figma-card-back">
+                        <div class="figma-card-meaning">대전대신고등학교</div>
+                    </div>
+                </div>
+            </div>
+            <div class="figma-card">
+                <div class="figma-card-inner">
+                    <div class="figma-card-front">고전하다</div>
+                    <div class="figma-card-back">
+                        <div class="figma-card-meaning">대전대신고등학교</div>
+                    </div>
+                </div>
+            </div>
+            <div class="figma-card">
+                <div class="figma-card-inner">
+                    <div class="figma-card-front">고수하다</div>
+                    <div class="figma-card-back">
+                        <div class="figma-card-meaning">차지한 물건이나 형세 따위를 굳게 지키다.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="figma-card">
+                <div class="figma-card-inner">
+                    <div class="figma-card-front">별첨하다</div>
+                    <div class="figma-card-back">
+                        <div class="figma-card-meaning">대전대신고등학교</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 - 오량 어학사전</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="daeshin-logo.png" alt="대전대신고등학교 마크" class="school-logo">
+                <h1>오량 어학사전</h1>
+            </div>
+            <div class="login-content">
+                <h2>회원가입</h2>
+                <p class="welcome-text">오량 어학사전의 회원이 되어보세요!</p>
+                
+                <form id="signupForm">
+                    <div class="input-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="studentId">학번</label>
+                        <input type="text" id="studentId" name="studentId" 
+                               placeholder="학번 5자리를 입력하세요" 
+                               pattern="[0-9]{5}" 
+                               maxlength="5" 
+                               required
+                               oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">비밀번호</label>
+                        <div class="password-input-container">
+                            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="passwordConfirm">비밀번호 확인</label>
+                        <div class="password-input-container">
+                            <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 다시 입력하세요" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('passwordConfirm')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">회원가입</button>
+                </form>
+                
+                <div class="links">
+                    <a href="login.html">이미 계정이 있으신가요? 로그인하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 성공 메시지 -->
+    <div id="successMessage" class="success-message">회원가입이 완료되었습니다!</div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Firebase SDK 모듈 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+        // Firebase 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyDK19IXxB0nKm8O3xmLGN6gx-S_8DoNM1w",
+            authDomain: "oryang-wordup.firebaseapp.com",
+            projectId: "oryang-wordup",
+            storageBucket: "oryang-wordup.firebasestorage.app",
+            messagingSenderId: "84303493775",
+            appId: "1:84303493775:web:d2882651447ea8927bcefa",
+            measurementId: "G-FEP4X9THMD"
+        };
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // 비밀번호 표시/숨기기 토글 함수
+        window.togglePassword = function(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        };
+
+        // 회원가입 폼 제출 처리
+        const signupForm = document.getElementById('signupForm');
+        const successMessage = document.getElementById('successMessage');
+
+        signupForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const studentId = document.getElementById('studentId').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const passwordConfirm = document.getElementById('passwordConfirm').value;
+
+            // 입력값 검증
+            if (!name || !studentId || !email || !password || !passwordConfirm) {
+                alert('모든 필드를 입력해주세요.');
+                return;
+            }
+
+            // 학번 형식 검증
+            if (!/^\d{5}$/.test(studentId)) {
+                alert('학번은 5자리 숫자여야 합니다.');
+                return;
+            }
+
+            // 비밀번호 확인
+            if (password !== passwordConfirm) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+
+            // 비밀번호 길이 검증
+            if (password.length < 6) {
+                alert('비밀번호는 6자리 이상이어야 합니다.');
+                return;
+            }
+
+            try {
+                // Firebase Authentication을 사용하여 회원가입
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Firestore에 사용자 정보 저장
+                await setDoc(doc(db, 'users', user.uid), {
+                    name: name,
+                    studentId: studentId,
+                    email: email,
+                    createdAt: serverTimestamp()
+                });
+
+                // 성공 메시지 표시
+                successMessage.style.display = 'block';
+
+                // 2초 후 로그인 페이지로 이동
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+
+            } catch (error) {
+                console.error('회원가입 오류:', error);
+                let errorMessage = '회원가입 중 오류가 발생했습니다.';
+                
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = '이미 사용 중인 이메일입니다.';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = '유효하지 않은 이메일 형식입니다.';
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = '비밀번호가 너무 약합니다.';
+                        break;
+                }
+                
+                alert(errorMessage);
+            }
+        });
+
+        // 페이지 로드 시 폼 초기화
+        window.onload = function() {
+            signupForm.reset();
+        };
+    </script>
+</body>
+</html> 

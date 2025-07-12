@@ -1,0 +1,189 @@
+/* 폰트 정의 */
+@font-face {
+    font-family: 'Paperlogy';
+    src: url('fonts/Paperlogy-6SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Figma 스타일 배너 */
+.banner {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3a4c3a;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.nav-btn {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #3a4c3a;
+    background: none;
+    border: none;
+    border-radius: 18px;
+    padding: 0.5em 1.5em;
+    margin: 0;
+    transition: background 0.2s, color 0.2s;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+    background: #e0e6e0;
+    color: #1a7f5a;
+}
+
+.login-btn {
+    background: #e0f5e0;
+    color: #1a7f5a;
+    border: none;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5em 2em;
+    margin-left: 1em;
+    transition: background 0.2s, color 0.2s;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-btn:hover {
+    background: #1a7f5a;
+    color: #fff;
+}
+
+.school-logo {
+    height: 38px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+
+.game-level-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: 'Paperlogy', sans-serif;
+}
+
+.level-selection {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.level-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.ranking-display {
+    margin-bottom: 2rem;
+}
+
+.ranking-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ranking-tab {
+    padding: 0.5rem 2rem;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ranking-tab.active {
+    background: #007bff;
+    color: white;
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.ranking-table th,
+.ranking-table td {
+    padding: 0.8rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.ranking-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+.level-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.level-btn {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.level-btn:nth-child(1) {
+    background: #28a745;
+    color: white;
+}
+
+.level-btn:nth-child(2) {
+    background: #ffc107;
+    color: #333;
+}
+
+.level-btn:nth-child(3) {
+    background: #dc3545;
+    color: white;
+}
+
+.level-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+} 

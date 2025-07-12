@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>골든벨 게임</title>
+    <link rel="stylesheet" href="goldenbell.css">
+</head>
+<body>
+    <!-- 홈페이지와 동일한 상단 네비게이션 -->
+    <nav class="banner figma-banner">
+        <div class="logo figma-logo">
+            <img src="daeshin-logo.png" alt="대전대신고등학교 마크" class="school-logo" style="height: 38px; vertical-align: middle; margin-right: 0.5em;">
+            오량 어학사전
+        </div>
+        <div class="nav-buttons figma-nav">
+            <button class="nav-btn" onclick="location.href='index.html'">홈</button>
+            <button class="nav-btn active" onclick="navigateWithAuth('goldenbell.html')">골든벨</button>
+            <button class="nav-btn" onclick="navigateWithAuth('game-level.html')">단어 게임</button>
+            <button class="nav-btn" onclick="navigateWithAuth('attendance.html')">출석체크</button>
+            <button class="nav-btn">어학사전</button>
+        </div>
+        <button class="login-btn figma-login" onclick="showLoginModal()">로그인</button>
+    </nav>
+
+    <div class="container">
+        <!-- 디데이 화면 -->
+        <div id="countdown-screen" class="countdown-screen">
+            <div class="countdown-content">
+                <h1 class="countdown-title">
+                    <img src="daeshin-logo.png" alt="대전대신고등학교 마크" style="height: 2.2em; vertical-align: middle; margin-right: 0.2em;">
+                    골든벨 대회
+                </h1>
+                <div class="countdown-subtitle">2025년 7월 15일</div>
+                
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <span id="days" class="countdown-number">000</span>
+                        <span class="countdown-label">일</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours" class="countdown-number">00</span>
+                        <span class="countdown-label">시간</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes" class="countdown-number">00</span>
+                        <span class="countdown-label">분</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds" class="countdown-number">00</span>
+                        <span class="countdown-label">초</span>
+                    </div>
+                </div>
+                
+                <div class="countdown-message">
+                    <p>골든벨 대회가 시작될 때까지 기다려주세요!</p>
+                    <p>대회 당일에는 단어 실력을 뽐내보세요! 🏆</p>
+                </div>
+                
+                <!-- 운영자 전용 버튼 -->
+                <div class="admin-section">
+                    <button id="admin-button" class="admin-button" onclick="showAdminLogin()">
+                        🔧 운영자 전용
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 관리자 로그인 모달 -->
+        <div id="admin-modal" class="modal">
+            <div class="modal-content">
+                <h2>관리자 로그인</h2>
+                <input type="password" id="admin-password" placeholder="비밀번호를 입력하세요" maxlength="4">
+                <div class="modal-buttons">
+                    <button onclick="loginAdmin()">로그인</button>
+                    <button onclick="closeAdminModal()">취소</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 화면 -->
+        <div id="game-screen" class="game-screen" style="display: none;">
+            <!-- 게임 영역 -->
+            <div id="game-area" class="game-area"></div>
+        </div>
+
+        <div class="result-container" id="result-container" style="display: none;">
+            <div class="result-message" id="result-message"></div>
+            <button onclick="nextQuestion()" id="next-button">다음 문제</button>
+        </div>
+
+        <div class="final-result" id="final-result" style="display: none;">
+            <h2>🎉 게임 완료!</h2>
+            <div class="final-score">
+                <p>최종 점수: <span id="final-score">0</span>점</p>
+                <p>정답률: <span id="accuracy">0</span>%</p>
+                <p>등급: <span id="grade">C</span></p>
+            </div>
+            <button onclick="restartGame()">다시 시작</button>
+            <button onclick="goHome()">홈으로</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="goldenbell.js"></script>
+</body>
+</html> 

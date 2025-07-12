@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>출석체크 - 오량 어학사전</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="attendance.css">
+</head>
+<body>
+    <!-- Figma 스타일 상단 네비게이션 -->
+    <nav class="banner figma-banner">
+        <div class="logo figma-logo">
+            <img src="daeshin-logo.png" alt="대전대신고등학교 마크" class="school-logo">
+            오량 어학사전
+        </div>
+        <div class="nav-buttons figma-nav">
+            <button class="nav-btn" onclick="window.location.href='index.html'">홈</button>
+            <button class="nav-btn" onclick="window.location.href='goldenbell.html'">골든벨</button>
+            <button class="nav-btn" onclick="window.location.href='game-level.html'">단어 게임</button>
+            <button class="nav-btn active" onclick="window.location.href='attendance.html'">출석체크</button>
+            <button class="nav-btn" onclick="window.location.href='dictionary.html'">어학사전</button>
+        </div>
+        <button class="login-btn figma-login">로그인</button>
+    </nav>
+
+    <main class="attendance-container">
+        <div class="click-hint">*Click it</div>
+        <button id="attendanceBtn" class="attendance-button">출석체크</button>
+        <div class="calendar-container">
+            <div class="calendar-bg">
+                <div class="calendar-grid">
+                    <div class="date"><span class="date-label">7/9</span><div class="stamp-img"></div></div>
+                    <div class="date"><span class="date-label">7/10</span><div class="stamp-img"></div></div>
+                    <div class="date"><span class="date-label">7/11</span><div class="stamp-img"></div></div>
+                    <div class="date"><span class="date-label">7/12</span><div class="stamp-img"></div></div>
+                    <div class="date"><span class="date-label">7/13</span><div class="stamp-img"></div></div>
+                    <div class="date"><span class="date-label">7/14</span><div class="stamp-img"></div></div>
+                    <div class="date"><span class="date-label">7/15</span><div class="stamp-img"></div></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="attendance-score" class="attendance-score"></div>
+
+    <img src="https://i.imgur.com/0QwQKpT.jpg" class="side-logo" alt="대전대신고등학교 로고">
+
+    <script src="script.js"></script>
+    <script src="attendance.js"></script>
+</body>
+</html> 
